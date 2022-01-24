@@ -1,51 +1,48 @@
 package Lesson20;
 
-public class Dead extends Thread {
+public class Dead {
 
-    public void get() {
+    public static void main(String[] args) {
+
+        DeadA deadA = new DeadA();
+        deadA.start();
+        DeadB deadB = new DeadB();
+        deadB.start();
+
+    }
+
+}
+
+class DeadA extends Thread {
+    void getA() {
         synchronized (String.class) {
             synchronized (Integer.class) {
-                synchronized (Long.class) {
-                    System.out.println("1 2 3");
-                }
-            }
-        }
-    }
-
-    public void get1() {
-        synchronized (Integer.class) {
-            synchronized (String.class) {
-                synchronized (Long.class) {
-                    System.out.println("1 2 3");
-                }
-            }
-        }
-    }
-
-
-    public void get2() {
-        synchronized (Long.class) {
-            synchronized (String.class) {
-                synchronized (Long.class) {
-                    System.out.println("1 2 3");
-                }
+                System.out.println("1 2 3");
             }
         }
     }
 
     @Override
     public void run() {
-        get();
-        get1();
-        get2();
+        for (int i = 0; i < 100; i++) {
+            getA();
+        }
+    }
+}
+
+class DeadB extends Thread {
+    void getB() {
+        synchronized (Integer.class) {
+            synchronized (String.class) {
+                System.out.println("1 2 3");
+            }
+        }
     }
 
-    public static void main(String[] args) {
-        Dead thread1 = new Dead();
-        thread1.start();
-        Dead thread2 = new Dead();
-        thread2.start();
-        Dead thread3 = new Dead();
-        thread3.start();
+    @Override
+    public void run() {
+        for (int i = 0; i < 100; i++) {
+            getB();
+        }
     }
 }

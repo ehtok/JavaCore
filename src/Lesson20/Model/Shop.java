@@ -14,8 +14,7 @@ import java.util.Random;
 
 public class Shop {
     private Queue<Integer> shopQueue = new ArrayDeque<>();
-    public static int count = 0;
-    public static final int FINISH = 10_000;
+
 
     private int randomAdd() {
         return new Random().nextInt(100);
@@ -38,7 +37,6 @@ public class Shop {
         shopQueue.remove();
         System.out.println("Customer buy product!");
         System.out.println("Product on storage: " + shopQueue.size());
-        System.out.println("Worked out elements:" + count);
         notify();
     }
 
@@ -55,7 +53,6 @@ public class Shop {
             shopQueue.add(randomAdd());
             System.out.println("Product add");
             System.out.println("Product on storage: " + shopQueue.size());
-            System.out.println("Worked out elements: " + count);
             notify();
         }
     }

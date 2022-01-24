@@ -9,10 +9,9 @@ public class Consumer implements Runnable {
     }
 
     @Override
-    public synchronized void run() {
-        while (Shop.count < Shop.FINISH) {
+    public void run() {
+        for (int i = 0; i < 200; i++) {
             shop.sellProduct();
-            Shop.count++;
         }
 
 
