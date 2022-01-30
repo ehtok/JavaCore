@@ -8,6 +8,7 @@ public class Program {
     public static void main(String[] args) {
         Shop shop = new Shop();
         shop.add();
+
         Consumer consumer = new Consumer(shop);
         Producer producer = new Producer(shop);
 
