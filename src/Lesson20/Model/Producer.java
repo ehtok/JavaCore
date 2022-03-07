@@ -8,7 +8,7 @@ public class Producer implements Runnable {
     }
 
     @Override
-    public synchronized void run() {
+    public void run() {
         for (int i = 0; i < 200; i++) {
             shop.addProduct();
         }
