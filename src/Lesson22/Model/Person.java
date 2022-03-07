@@ -3,8 +3,8 @@ package Lesson22.Model;
 import Lesson22.AcademyInfo;
 
 public class Person {
-    String name = "Nick";
-    int age = 20;
+    private String name = "Nick";
+    private int age = 20;
 
     @AcademyInfo(year = 5)
     public void printPerson() {
